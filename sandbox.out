@@ -1,0 +1,143 @@
+Text: Apple
+Lemma: Apple
+POS: PROPN
+Tag: NNP
+Dependency: nsubj
+Shape: Xxxxx
+Is Alpha: True
+Is Stop: False
+Head: looking
+Entity Type: ORG
+Entity IOB: B
+Character Offset: 0
+--------------------
+Text: is
+Lemma: be
+POS: AUX
+Tag: VBZ
+Dependency: aux
+Shape: xx
+Is Alpha: True
+Is Stop: True
+Head: looking
+Entity Type: 
+Entity IOB: O
+Character Offset: 6
+--------------------
+Text: looking
+Lemma: look
+POS: VERB
+Tag: VBG
+Dependency: ROOT
+Shape: xxxx
+Is Alpha: True
+Is Stop: False
+Head: looking
+Entity Type: 
+Entity IOB: O
+Character Offset: 9
+--------------------
+Text: at
+Lemma: at
+POS: ADP
+Tag: IN
+Dependency: prep
+Shape: xx
+Is Alpha: True
+Is Stop: True
+Head: looking
+Entity Type: 
+Entity IOB: O
+Character Offset: 17
+--------------------
+Text: buying
+Lemma: buy
+POS: VERB
+Tag: VBG
+Dependency: pcomp
+Shape: xxxx
+Is Alpha: True
+Is Stop: False
+Head: at
+Entity Type: 
+Entity IOB: O
+Character Offset: 20
+--------------------
+Text: U.K.
+Lemma: U.K.
+POS: PROPN
+Tag: NNP
+Dependency: dobj
+Shape: X.X.
+Is Alpha: False
+Is Stop: False
+Head: buying
+Entity Type: GPE
+Entity IOB: B
+Character Offset: 27
+--------------------
+Text: startup
+Lemma: startup
+POS: NOUN
+Tag: NN
+Dependency: dep
+Shape: xxxx
+Is Alpha: True
+Is Stop: False
+Head: looking
+Entity Type: 
+Entity IOB: O
+Character Offset: 32
+--------------------
+Text: for
+Lemma: for
+POS: ADP
+Tag: IN
+Dependency: prep
+Shape: xxx
+Is Alpha: True
+Is Stop: True
+Head: startup
+Entity Type: 
+Entity IOB: O
+Character Offset: 40
+--------------------
+Text: $
+Lemma: $
+POS: SYM
+Tag: $
+Dependency: quantmod
+Shape: $
+Is Alpha: False
+Is Stop: False
+Head: billion
+Entity Type: MONEY
+Entity IOB: B
+Character Offset: 44
+--------------------
+Text: 1
+Lemma: 1
+POS: NUM
+Tag: CD
+Dependency: compound
+Shape: d
+Is Alpha: False
+Is Stop: False
+Head: billion
+Entity Type: MONEY
+Entity IOB: I
+Character Offset: 45
+--------------------
+Text: billion
+Lemma: billion
+POS: NUM
+Tag: CD
+Dependency: pobj
+Shape: xxxx
+Is Alpha: True
+Is Stop: False
+Head: for
+Entity Type: MONEY
+Entity IOB: I
+Character Offset: 47
+--------------------

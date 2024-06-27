@@ -1,0 +1,41 @@
+    # for token in doc:
+    #     print(token)
+    #     if token.text.lower() in ["i", "me"]:  # Recognize "I" as user
+    #         if token.dep_ == "nsubj":  # "I" as the subject
+    #             current_transaction["sender"] = "user"
+    #         elif token.dep_ == "dobj" or token.dep_ == "pobj":  # "me" as the object
+    #             current_transaction["receiver"] = "user"
+    #     elif token.pos_ == "PROPN" and token.dep_ == "pobj":  # Assuming named entities are persons and direct objects
+    #         current_transaction["receiver"] = token.text
+    #     elif token.pos_ == "NUM":
+    #         if token.dep_ == "nummod":
+    #             if "amount" not in current_transaction:
+    #                 current_transaction["amount"] = float(token.text)
+    #                 amount_in_cents = False  # Reset the cents flag
+    #             else:
+    #                 current_transaction["amount"] += float(token.text) / 100
+    #                 amount_in_cents = True  # Set the cents flag
+    #     elif token.pos_ == "PROPN" and token.dep_ == "nsubj":
+    #         # print("PREV TRANS:", current_transaction)
+    #         if current_transaction:
+    #             # Finalize the current transaction before starting a new one
+    #             if current_transaction["sender"] != "user":
+    #                 current_transaction["amount"] *= -1
+               
+    #             current_transaction["currency"] = "US Dollar"
+    #             transactions.append(current_transaction)
+    #             current_transaction = {}
+           
+    #         current_transaction["sender"] = token.text
+    #     elif token.pos_ == "NOUN" and token.dep_ == "dobj":
+    #         current_transaction["Description"] = token.text
+        
+    #     # print(current_transaction)
+
+    # # Finalize the last transaction
+    # if "sender" in current_transaction and "receiver" in current_transaction:
+    #     if current_transaction["sender"] != "user":
+    #         current_transaction["amount"] *= -1
+
+    #     current_transaction["currency"] = "US Dollar"
+    #     transactions.append(current_transaction)
