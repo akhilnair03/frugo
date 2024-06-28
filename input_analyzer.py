@@ -4,17 +4,11 @@ parses the transaction and returns a JSON object with the reciever, sender,
 currency, items, and amount of each transaction
 '''
 
-import spacy
 import json
-from spacy.language import Language
-from spacy.tokens import Doc
 from flask import Flask, request, jsonify
 from octoai.text_gen import ChatMessage, ChatCompletionResponseFormat
 from octoai.client import OctoAI
 from pydantic import BaseModel
-
-#Initialze the NLP model + language
-nlp = spacy.load('en_core_web_sm')
 
 #Initialize Flask API
 app = Flask(__name__)
@@ -37,7 +31,7 @@ def octoai_api(text):
         model="meta-llama-3-8b-instruct",
         messages=[
             ChatMessage(
-                content="Extract the receiver, sender, currency, amount, and items from the given text for each transaction. If there are N senders in one transaction, make N transactions. Use context clues. Return only in a JSON format with no other content at all",
+                content="Extract the receiver, sender, currency, amount, and items from the given text for each transaction. If there are N senders in one transaction, make N transactions. Use context clues. Return only in a JSON format with no other content at all.",
                 role="system"
             ), # This is the instructions for the model
             ChatMessage(
@@ -55,7 +49,7 @@ def octoai_api(text):
         ),
     )
 
-    # print(x.choices[0].message.content)
+    # print(model_output.choices[0].message.content)
     return model_output.choices[0].message.content
 
 
@@ -70,6 +64,13 @@ def analyze_text():
     text = data['text']
 
     result["transactions"]= json.loads(octoai_api(text))
+
+
+    #TODO: have to rethink this with flask sessions later
+    for transaction in result["transactions"]:
+        if transaction["receiver"].lower() in ['i','my','me','you']:
+            transaction["amount"] *= -1
+    # print(result)
     return jsonify(result)
 
 if __name__ == '__main__':
