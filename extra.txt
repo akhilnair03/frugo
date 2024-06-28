@@ -39,3 +39,112 @@
 
     #     current_transaction["currency"] = "US Dollar"
     #     transactions.append(current_transaction)
+
+
+
+
+
+# def test(text):
+#     doc = nlp(text)
+#     transactions=[]
+#     # for sent in doc.sents:
+#     #     print(sent.text)
+#     #     print('****')
+
+
+#     '''
+#     Logic: Just keep reading through and building a transaction. Once a full
+#     transaction is found then understand the transaction over and move onto the next 
+#     '''
+#     for token in doc:
+#         print(f"Token: {token.text}, is_sent_start: {token.is_sent_start}")
+#         transaction = {
+#             "sender": None,
+#             "amount": None,
+#             "currency": None,
+#             "description": ""
+#         }
+        
+#         # # Flags to identify if we have seen certain key elements
+#         seen_currency,seen_amount,seen_sender,seen_reciever = False,False,False,False
+#         # if token.dep_ == "nsubj" # 
+        
+#         # # Identify named entities for amounts and currencies
+#         # for ent in sent.ents:
+#         #     if ent.label_ == "MONEY":
+#         #         transaction["amount"] = ent.text
+#         #         seen_amount = True
+
+#         # # Use dependency parsing and pattern matching for more general extraction
+#         # for token in sent:
+#         #     if token.dep_ in ("nsubj", "nsubjpass"):
+#         #         if token.text.lower() == 'i':
+#         #             transaction["sender"] = "user"
+#         #         else:
+#         #             transaction["sender"] = token.text
+#         #     if token.text in ["$", "€", "¥", "£", "₹"]:
+#         #         transaction["currency"] = token.text
+#         #         seen_currency = True
+
+#         #     # Capture descriptions based on noun phrases and prepositional objects
+#         #     if token.dep_ in ("dobj", "pobj", "attr") and token.pos_ == "NOUN":
+#         #         # If we see a conjunction, capture the whole phrase
+#         #         if token.head.dep_ in ("prep", "dative", "pobj") or token.dep_ == "conj":
+#         #             noun_phrase = " ".join([child.text for child in token.subtree])
+#         #             transaction["description"] += " " + noun_phrase
+#         #         elif token.dep_ == "pobj":
+#         #             transaction["description"] += " " + token.text
+        
+#         # # Post-process to clean up the transaction dictionary
+#         # if transaction["amount"] and seen_currency and seen_amount:
+#         #     transactions.append(transaction)
+
+#     return transactions
+
+# def parse_transaction(text):
+#     # return a dictionary
+#     doc = nlp(text)
+#     transaction = {
+#         "Description":"",
+#         "sender":None,
+#         "amount":None,
+#         "reciever":None,
+#         "currency":None
+#     }
+
+#     currencies = {
+#         "$": "US dollar",
+#         "€": "Euro",
+#         "¥": "Yen"
+#     }   
+
+#     for token in doc:
+#         print(token.text,token.dep_,token.pos_,token.ent_type_)
+#         if token.dep_== "nsubj": # this means this token DOES the verb
+#             if token.text.lower() in ['i','my']:
+#                 transaction["sender"] = "user"
+#             else:
+#                 transaction["sender"] = token.text
+#         elif token.dep_ == "poss": #indirect object
+#             if token.text.lower() in ['i','my']:
+#                 transaction["reciever"] = "user"
+#             else:
+#                 transaction["reciever"] = token.text
+#         elif token.text in currencies: #Check for currency type
+#             transaction["currency"] = currencies[token.text]
+#         elif token.pos_ == "NUM":
+#             transaction["amount"] = float(token.text)
+#         elif token.dep_ == "pobj":
+#             # noun_phrase=""
+#             # for child in token.subtree:
+#             #     if child.dep_ != "poss":
+#             #         noun_phrase+=' '+child.text
+
+#             noun_phrase = " ".join([child.text for child in token.subtree])
+#             transaction["Description"] += noun_phrase
+
+#     if transaction["sender"] != "user":
+#         transaction["amount"] *= -1
+
+#     return transaction
+
