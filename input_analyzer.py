@@ -16,8 +16,8 @@ app = Flask(__name__)
 
 def octoai_api(text):
     class Output(BaseModel):
-        sender: str
-        reciever: str
+        sender : str
+        reciever : str
         amount : float
         items : str
         currency : str
